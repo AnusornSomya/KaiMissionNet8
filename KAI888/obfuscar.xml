@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Obfuscator>
+  <Var name="InPath" value="bin\x86\Release\net48" />
+  <Var name="OutPath" value="bin\x86\Release\net48\obfuscated" />
+
+  <!-- Conservative settings to reduce runtime breakage in WinForms/PInvoke apps -->
+  <Var name="KeepPublicApi" value="true" />
+  <Var name="HidePrivateApi" value="true" />
+  <Var name="ReuseNames" value="false" />
+  <Var name="UseUnicodeNames" value="false" />
+  <Var name="RenameProperties" value="false" />
+  <Var name="RenameEvents" value="false" />
+  <Var name="RegenerateDebugInfo" value="true" />
+  <Var name="SuppressIldasm" value="true" />
+
+  <AssemblySearchPath path="$(InPath)" />
+  <AssemblySearchPath path="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8" />
+  <AssemblySearchPath path="C:\Windows\Microsoft.NET\Framework\v4.0.30319" />
+  <AssemblySearchPath path="C:\Windows\Microsoft.NET\Framework64\v4.0.30319" />
+
+  <Module file="$(InPath)\KAIMISSION.exe">
+    <!-- JSON payload shape must stay stable -->
+    <SkipType name="ImageSearchUI.MainForm+CustomerRecord" />
+  </Module>
+</Obfuscator>
+
