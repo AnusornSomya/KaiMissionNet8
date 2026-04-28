@@ -66,6 +66,10 @@ namespace ImageSearchUI
 					this.chkOk2.Checked
 				},
 				{
+					"chkVictory",
+					this.chkVictory.Checked
+				},
+				{
 					"chkOkMission",
 					this.chkOkMission.Checked
 				},
@@ -197,6 +201,7 @@ namespace ImageSearchUI
 				this.chkNotReady.Checked = (state.ContainsKey("chkNotReady") && state["chkNotReady"]);
 				this.chkOk1.Checked = (state.ContainsKey("chkOk1") && state["chkOk1"]);
 				this.chkOk2.Checked = (state.ContainsKey("chkOk2") && state["chkOk2"]);
+				this.chkVictory.Checked = (state.ContainsKey("chkVictory") ? state["chkVictory"] : this.chkOk2.Checked);
 				this.chkOkMission.Checked = (state.ContainsKey("chkOkMission") && state["chkOkMission"]);
 				this.chkEndGame.Checked = (state.ContainsKey("chkEndGame") && state["chkEndGame"]);
 				this.chkOutRoom.Checked = (state.ContainsKey("chkOutRoom") && state["chkOutRoom"]);
@@ -1085,6 +1090,12 @@ namespace ImageSearchUI
 			{
 				Text = "ยืนยันเล็ก",
 				Location = new Point(20, 220),
+				AutoSize = true
+			};
+			this.chkVictory = new CheckBox
+			{
+				Text = "ยืนยันชนะ",
+				Location = new Point(20, 240),
 				AutoSize = true
 			};
 			this.chkOkMission = new CheckBox
@@ -2006,6 +2017,50 @@ namespace ImageSearchUI
 								}
 							}, this.cancellationSource.Token);
 						}
+					}
+				}
+				if (this.chkVictory.Checked)
+				{
+					tasks += "ยืนยันชนะ, ";
+					string path2 = Path.Combine(Environment.GetEnvironmentVariable("TEMP") ?? "C:\\Temp", "png");
+					string victoryBluePath = Path.Combine(path2, "VictoryBlue.png");
+					string victoryRedPath = Path.Combine(path2, "VictoryRed.png");
+					bool foundVictory = false;
+					if (File.Exists(victoryBluePath))
+					{
+						using (Bitmap targetVictoryBlue = new Bitmap(victoryBluePath))
+						{
+							Point foundAtVictoryBlue;
+							foundVictory = ImageSearchHelper.FindImageWithDll(this.latestScreen, targetVictoryBlue, 20, out foundAtVictoryBlue);
+						}
+					}
+					if (!foundVictory && File.Exists(victoryRedPath))
+					{
+						using (Bitmap targetVictoryRed = new Bitmap(victoryRedPath))
+						{
+							Point foundAtVictoryRed;
+							foundVictory = ImageSearchHelper.FindImageWithDll(this.latestScreen, targetVictoryRed, 20, out foundAtVictoryRed);
+						}
+					}
+					if (foundVictory)
+					{
+						Task.Run(delegate()
+						{
+							CancellationToken token = this.cancellationSource.Token;
+							try
+							{
+								AutoItX.AU3_Send("{Enter down}", 0);
+								AutoItX.AU3_Sleep(100);
+								AutoItX.AU3_Send("{Enter up}", 0);
+							}
+							catch (OperationCanceledException)
+							{
+							}
+							catch (Exception ex)
+							{
+								Console.WriteLine("Error (Victory_time): " + ex.Message);
+							}
+						}, this.cancellationSource.Token);
 					}
 				}
 				if (this.chkOkMission.Checked)
@@ -6125,6 +6180,7 @@ namespace ImageSearchUI
 				this.chkNotReady.Checked = false;
 				this.chkOk1.Checked = true;
 				this.chkOk2.Checked = true;
+				this.chkVictory.Checked = false;
 				this.chkOkMission.Checked = true;
 				this.chkEndGame.Checked = true;
 				this.chkOutRoom.Checked = false;
@@ -6167,6 +6223,7 @@ namespace ImageSearchUI
 				this.chkNotReady.Checked = false;
 				this.chkOk1.Checked = true;
 				this.chkOk2.Checked = true;
+				this.chkVictory.Checked = false;
 				this.chkOkMission.Checked = true;
 				this.chkEndGame.Checked = true;
 				this.chkOutRoom.Checked = false;
@@ -6209,6 +6266,7 @@ namespace ImageSearchUI
 				this.chkNotReady.Checked = false;
 				this.chkOk1.Checked = true;
 				this.chkOk2.Checked = true;
+				this.chkVictory.Checked = true;
 				this.chkOkMission.Checked = true;
 				this.chkEndGame.Checked = true;
 				this.chkOutRoom.Checked = false;
@@ -6250,6 +6308,7 @@ namespace ImageSearchUI
 				this.chkNotReady.Checked = true;
 				this.chkOk1.Checked = true;
 				this.chkOk2.Checked = true;
+				this.chkVictory.Checked = false;
 				this.chkOkMission.Checked = false;
 				this.chkEndGame.Checked = true;
 				this.chkOutRoom.Checked = true;
@@ -6292,6 +6351,7 @@ namespace ImageSearchUI
 				this.chkNotReady.Checked = true;
 				this.chkOk1.Checked = true;
 				this.chkOk2.Checked = true;
+				this.chkVictory.Checked = false;
 				this.chkOkMission.Checked = false;
 				this.chkEndGame.Checked = true;
 				this.chkOutRoom.Checked = true;
@@ -6334,6 +6394,7 @@ namespace ImageSearchUI
 				this.chkNotReady.Checked = false;
 				this.chkOk1.Checked = true;
 				this.chkOk2.Checked = true;
+				this.chkVictory.Checked = true;
 				this.chkOkMission.Checked = false;
 				this.chkEndGame.Checked = true;
 				this.chkOutRoom.Checked = true;
@@ -6379,6 +6440,7 @@ namespace ImageSearchUI
 				this.chkNotReady.Checked = false;
 				this.chkOk1.Checked = true;
 				this.chkOk2.Checked = true;
+				this.chkVictory.Checked = false;
 				this.chkOkMission.Checked = true;
 				this.chkEndGame.Checked = true;
 				this.chkOutRoom.Checked = true;
@@ -6421,6 +6483,7 @@ namespace ImageSearchUI
 				this.chkNotReady.Checked = false;
 				this.chkOk1.Checked = true;
 				this.chkOk2.Checked = true;
+				this.chkVictory.Checked = false;
 				this.chkOkMission.Checked = false;
 				this.chkEndGame.Checked = true;
 				this.chkOutRoom.Checked = false;
@@ -6463,6 +6526,7 @@ namespace ImageSearchUI
 				this.chkNotReady.Checked = false;
 				this.chkOk1.Checked = false;
 				this.chkOk2.Checked = false;
+				this.chkVictory.Checked = false;
 				this.chkOkMission.Checked = false;
 				this.chkEndGame.Checked = false;
 				this.chkOutRoom.Checked = false;
@@ -6495,7 +6559,7 @@ namespace ImageSearchUI
 			};
 			this.btnPause.Click += delegate(object s, EventArgs e)
 			{
-				if (!this.chkstart.Checked && !this.chkClosePass.Checked && !this.chkCloseSpecial.Checked && !this.chkCloseMessage.Checked && !this.chkCheckIN.Checked && !this.chkCloseCheck.Checked && !this.chkStartGame.Checked && !this.chkReady.Checked && !this.chkNotReady.Checked && !this.chkOk1.Checked && !this.chkOk2.Checked && !this.chkOkMission.Checked && !this.chkEndGame.Checked && !this.chkOutRoom.Checked && !this.chkGiveHead.Checked && !this.chkOrderF5.Checked && !this.chkSlasHead.Checked && !this.chkSlasBody.Checked && !this.chkBuff.Checked && !this.chkCornerR.Checked && !this.chkCornerL.Checked && !this.chkNotCorner.Checked && !this.chkMissionHit.Checked && !this.chkMissionAttack.Checked && !this.chkWigHead.Checked && !this.chkWigBody.Checked && !this.chkWaterPark.Checked && !this.chkExpClan.Checked && !this.chkTower11.Checked && !this.chkMetro.Checked && !this.chkFatalZone.Checked && !this.chkFalluCity.Checked && !this.chkMarineWave.Checked && !this.chkSlasHeadSpawn30.Checked && !this.chkSlasBodySpawn30.Checked && !this.chkSlasHeadSpawn50.Checked && !this.chkSlasBodySpawn50.Checked && !this.chkSlasHeadSpawn100.Checked && !this.chkSlasBodySpawn100.Checked)
+				if (!this.chkstart.Checked && !this.chkClosePass.Checked && !this.chkCloseSpecial.Checked && !this.chkCloseMessage.Checked && !this.chkCheckIN.Checked && !this.chkCloseCheck.Checked && !this.chkStartGame.Checked && !this.chkReady.Checked && !this.chkNotReady.Checked && !this.chkOk1.Checked && !this.chkOk2.Checked && !this.chkVictory.Checked && !this.chkOkMission.Checked && !this.chkEndGame.Checked && !this.chkOutRoom.Checked && !this.chkGiveHead.Checked && !this.chkOrderF5.Checked && !this.chkSlasHead.Checked && !this.chkSlasBody.Checked && !this.chkBuff.Checked && !this.chkCornerR.Checked && !this.chkCornerL.Checked && !this.chkNotCorner.Checked && !this.chkMissionHit.Checked && !this.chkMissionAttack.Checked && !this.chkWigHead.Checked && !this.chkWigBody.Checked && !this.chkWaterPark.Checked && !this.chkExpClan.Checked && !this.chkTower11.Checked && !this.chkMetro.Checked && !this.chkFatalZone.Checked && !this.chkFalluCity.Checked && !this.chkMarineWave.Checked && !this.chkSlasHeadSpawn30.Checked && !this.chkSlasBodySpawn30.Checked && !this.chkSlasHeadSpawn50.Checked && !this.chkSlasBodySpawn50.Checked && !this.chkSlasHeadSpawn100.Checked && !this.chkSlasBodySpawn100.Checked)
 				{
 					MessageBox.Show("โปรดเลือกอย่างน้อย 1 ตัวเลือกก่อน", "แจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					return;
@@ -6588,9 +6652,12 @@ namespace ImageSearchUI
 		private CheckBox chkOk2;
 
 		// Token: 0x0400002B RID: 43
-		private CheckBox chkOkMission;
+		private CheckBox chkVictory;
 
 		// Token: 0x0400002C RID: 44
+		private CheckBox chkOkMission;
+
+		// Token: 0x0400002D RID: 45
 		private CheckBox chkEndGame;
 
 		// Token: 0x0400002D RID: 45
