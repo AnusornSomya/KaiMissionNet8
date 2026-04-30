@@ -3374,6 +3374,119 @@ namespace ImageSearchUI
 											AutoItX.AU3_Sleep(20);
 											AutoItX.AU3_MouseUp("left");
 											AutoItX.AU3_Sleep(500);
+										}										
+										for (int num5 = 0; num5 < 3; num5++)
+										{
+											AutoItX.AU3_Send("{Enter down}", 0);
+											AutoItX.AU3_Sleep(300);
+											AutoItX.AU3_Send("{Enter up}", 0);											
+											AutoItX.AU3_Sleep(100);
+											AutoItX.AU3_Send("{SHIFTdown}", 0);
+											AutoItX.AU3_Sleep(100);
+											AutoItX.AU3_Send("{O down}", 0);
+											AutoItX.AU3_Sleep(100);
+											AutoItX.AU3_Send("{O up}", 0);
+											AutoItX.AU3_Send("{U down}", 0);
+											AutoItX.AU3_Sleep(100);
+											AutoItX.AU3_Send("{U up}", 0);
+											AutoItX.AU3_Send("{T down}", 0);
+											AutoItX.AU3_Sleep(100);
+											AutoItX.AU3_Send("{T up}", 0);
+											AutoItX.AU3_Send("{SHIFTup}", 0);
+											AutoItX.AU3_Send("{Enter down}", 0);
+											AutoItX.AU3_Sleep(300);
+											AutoItX.AU3_Send("{Enter up}", 0);
+											AutoItX.AU3_Sleep(1500);
+										}
+									}
+								}
+								if (CheckHitK2.exit()) 
+								{
+									AutoItX.AU3_Send("{Esc down}", 0);
+									AutoItX.AU3_Sleep(500);
+									AutoItX.AU3_Send("{Esc up}", 0);
+									AutoItX.AU3_Sleep(2000);
+									AutoItX.AU3_MouseClick("left", 495, 650, 1, 0);
+									AutoItX.AU3_Sleep(500);									
+									AutoItX.AU3_Send("{SHIFTdown}", 0);
+									AutoItX.AU3_Sleep(100);
+									AutoItX.AU3_Send("{F down}", 0);
+									AutoItX.AU3_Sleep(100);
+									AutoItX.AU3_Send("{F up}", 0);
+									AutoItX.AU3_Send("{SHIFTup}", 0);
+									AutoItX.AU3_Send("{5 down}", 0);
+									AutoItX.AU3_Sleep(100);
+									AutoItX.AU3_Send("{5 up}", 0);
+									AutoItX.AU3_Send("{Enter down}", 0);
+									AutoItX.AU3_Sleep(100);
+									AutoItX.AU3_Send("{Enter up}", 0);
+									AutoItX.AU3_Sleep(5000);
+									for (int num3 = 0; num3 < 10; num3++)
+									{
+										AutoItX.AU3_Send("{F5 down}", 0);
+										AutoItX.AU3_Sleep(100);
+										AutoItX.AU3_Send("{F5 up}", 0);
+										AutoItX.AU3_Sleep(500);
+									}
+									AutoItX.AU3_Sleep(4000);
+									if (CheckRun.exit())
+									{
+										AutoItX.AU3_MouseUp("left");
+										AutoItX.AU3_Send("{CTRLUP}", 0);
+										AutoItX.AU3_Send("{ALTUP}", 0);
+										AutoItX.AU3_Sleep(1500);
+										AutoItX.AU3_Send("{4 down}", 0);
+										AutoItX.AU3_Sleep(300);
+										AutoItX.AU3_Send("{4 up}", 0);
+										AutoItX.AU3_Send("{A down}", 0);
+										AutoItX.AU3_Sleep(1500);
+										AutoItX.AU3_Send("{A up}", 0);
+										AutoItX.AU3_Send("{W down}", 0);
+										AutoItX.AU3_Send("{A down}", 0);
+										AutoItX.AU3_Sleep(1500);
+										AutoItX.AU3_Send("{W up}", 0);
+										AutoItX.AU3_Send("{A up}", 0);
+										AutoItX.AU3_Send("{W down}", 0);
+										AutoItX.AU3_Send("{D down}", 0);
+										AutoItX.AU3_Sleep(1500);
+										AutoItX.AU3_Send("{W up}", 0);
+										AutoItX.AU3_Send("{D up}", 0);
+										AutoItX.AU3_Send("{W down}", 0);
+										AutoItX.AU3_Sleep(1200);
+										AutoItX.AU3_Send("{W up}", 0);
+										AutoItX.AU3_Send("{W down}", 0);
+										AutoItX.AU3_Send("{D down}", 0);
+										AutoItX.AU3_Sleep(850);
+										AutoItX.AU3_Send("{W up}", 0);
+										AutoItX.AU3_Send("{D up}", 0);
+										AutoItX.AU3_Send("{W down}", 0);
+										AutoItX.AU3_Sleep(2500);
+										AutoItX.AU3_Send("{W up}", 0);
+										AutoItX.AU3_Send("{D down}", 0);
+										AutoItX.AU3_Sleep(300);
+										AutoItX.AU3_Send("{D up}", 0);
+										AutoItX.AU3_Send("{W down}", 0);
+										AutoItX.AU3_Sleep(3800);
+										AutoItX.AU3_Send("{W up}", 0);
+										AutoItX.AU3_Send("{D down}", 0);
+										AutoItX.AU3_Sleep(300);
+										AutoItX.AU3_Send("{D up}", 0);
+										AutoItX.AU3_Send("{W down}", 0);
+										AutoItX.AU3_Sleep(2300);
+										AutoItX.AU3_Send("{W up}", 0);
+										MouseWinApi.MoveRelative(-3115, -20);
+										AutoItX.AU3_Send("{W down}", 0);
+										AutoItX.AU3_Sleep(100);
+										AutoItX.AU3_Send("{W up}", 0);
+										AutoItX.AU3_Send("{1 down}", 0);
+										AutoItX.AU3_Sleep(300);
+										AutoItX.AU3_Send("{1 up}", 0);
+										for (int num4 = 0; num4 < 12; num4++)
+										{
+											AutoItX.AU3_MouseDown("left");
+											AutoItX.AU3_Sleep(20);
+											AutoItX.AU3_MouseUp("left");
+											AutoItX.AU3_Sleep(500);
 										}
 										AutoItX.AU3_Sleep(2300);
 										AutoItX.AU3_Send("{4 down}", 0);
